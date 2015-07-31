@@ -175,7 +175,7 @@ aside.org-nav {
     vertical-align: middle;
 
     .search-wrapper {
-      @include span-columns(6 of 9, table);
+      @include span-columns(5 of 9, table);
       padding-right: 1em;
       position: relative;
       vertical-align: top;
@@ -231,8 +231,11 @@ aside.org-nav {
       }
     }
 
-    .refresh-wrapper {
-      @include span-columns(3 of 9, table);
+    .include-private-repos-wrapper {
+      padding-right: 1em;
+    }
+
+    .refresh-wrapper, .include-private-repos-wrapper {
       vertical-align: top;
 
       @include media($small-screen) {
@@ -241,7 +244,15 @@ aside.org-nav {
       }
     }
 
-    button.refresh {
+    .include-private-repos-wrapper {
+      @include span-columns(2 of 9, table);
+    }
+
+    .refresh-wrapper {
+      @include span-columns(1 of 9, table);
+    }
+
+    button.refresh, a.include-private-repos {
       @include transition(all 0.15s linear);
       background-color: rgb(248,248,248);
       border-radius: 3px;
@@ -266,6 +277,10 @@ aside.org-nav {
       &:disabled {
         opacity: 0.5;
       }
+    }
+
+    a.include-private-repos {
+      display: inline-block;
     }
   }
 

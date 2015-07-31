@@ -1,6 +1,6 @@
 en:
-  sync_repos: "Refresh repo list"
-  syncing_repos: "Loading repos..."
+  sync_repos: "Refresh"
+  syncing_repos: "Loading..."
   authenticate: "Sign In with GitHub"
   active_repos: "Active repos"
   search_placeholder: "Search by repo"
