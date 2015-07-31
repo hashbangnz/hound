@@ -1,4 +1,6 @@
 class RepoActivator
+  include Routing
+
   attr_reader :errors
 
   def initialize(github_token:, repo:)
@@ -67,18 +69,6 @@ class RepoActivator
   def delete_webhook
     github.remove_hook(repo.full_github_name, repo.hook_id) do
       repo.update(hook_id: nil)
-    end
-  end
-
-  def builds_url
-    URI.join("#{protocol}://#{ENV["HOST"]}", "builds").to_s
-  end
-
-  def protocol
-    if ENV.fetch("ENABLE_HTTPS") == "yes"
-      "https"
-    else
-      "http"
     end
   end
 
