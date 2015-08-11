@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     github_username
   end
 
+  def active_repos
+    repos.active
+  end
+
   def billable_email
     payment_gateway_customer.email
   end
