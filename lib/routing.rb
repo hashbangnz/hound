@@ -4,7 +4,7 @@ module Routing
 
   included do
     def default_url_options
-      ActionMailer::Base.default_url_options
+      { host: ENV['HOST'] }
     end
   end
 end
