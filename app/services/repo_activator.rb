@@ -1,6 +1,4 @@
 class RepoActivator
-  include Routing
-
   attr_reader :errors
 
   def initialize(github_token:, repo:)
@@ -75,5 +73,9 @@ class RepoActivator
   def add_error(error)
     error_message = ErrorMessageTranslation.from_error_response(error)
     errors.push(error_message).compact!
+  end
+
+  def builds_url
+    Rails.application.routes.url_helpers.builds_url
   end
 end
