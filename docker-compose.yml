@@ -1,0 +1,27 @@
+postgresql:
+  image: hashbangnz/postgres:9.4
+  ports:
+    - 5432
+  volumes:
+    - /home/deploy/log/hound_staging/postgres:/var/log/postgresql
+    - ../postgres-data/data:/var/lib/postgresql/data
+  environment:
+    POSTGRES_USER: docker
+    POSTGRES_PASSWORD: docker
+web:
+  build: .
+  volumes:
+   - /home/deploy/log/hound_staging/unicorn:/var/log
+   - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/assets:/app/public/assets
+   - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/uploads:/app/public/uploads
+   - vendor/bundle:/bundle
+  ports:
+    - ":3000"
+  links:
+    - postgresql
+  environment:
+    RAILS_ENV: staging
+    VIRTUAL_HOST: hound.docker.hashbang.co.nz
+    POSTGRES_USER: docker
+    POSTGRES_PASSWORD: docker
+  command: ./bin/docker-start

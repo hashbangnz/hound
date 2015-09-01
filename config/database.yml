@@ -1,9 +1,19 @@
-development: &default
+▽base: &default
   adapter: postgresql
   encoding: unicode
-  database: hound_development
+  template: template0
+  pool: 5
+  username: <%= ENV.fetch('POSTGRES_USER', 'root') %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD', '') %>
+  host: <%= ENV.fetch('POSTGRESQL_PORT_5432_TCP_ADDR', '') %>
+  port: <%= ENV.fetch('POSTGRESQL_PORT_5432_TCP_PORT', '5432') %>
+  database: hound_<%= ENV.fetch('RAILS_ENV', '') %>
+  prepared_statements: false
   pool: <%= ENV.fetch("DB_POOL", 5) %>
   reaping_frequency: <%= ENV.fetch("DB_REAPING_FREQUENCY", 10) %>
+
+staging:
+  <<: *default
 
 test:
   <<: *default
