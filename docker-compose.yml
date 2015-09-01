@@ -19,6 +19,7 @@ web:
     - ":3000"
   links:
     - postgresql
+  env_file: .env
   environment:
     RAILS_ENV: staging
     VIRTUAL_HOST: hound.docker.hashbang.co.nz
