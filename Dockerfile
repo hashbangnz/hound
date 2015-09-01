@@ -1,4 +1,4 @@
-FROM hashbangnz/ruby:2.2.3
+FROM hashbangnz/ruby:2.2.2
 
 RUN apt-get update
 
