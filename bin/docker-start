@@ -3,7 +3,6 @@ set -e
 
 bundle exec rake db:create
 bundle exec rake db:migrate
-bundle exec whenever --update-crontab
 cron 
 bundle exec unicorn -c config/unicorn.rb -E staging
 
