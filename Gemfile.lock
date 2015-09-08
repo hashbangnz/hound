@@ -394,6 +394,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.2.3)
   rails_12factor
+  redis
   resque (~> 1.25.0)
   resque-scheduler
   resque-sentry

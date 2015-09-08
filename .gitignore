@@ -1,4 +1,5 @@
-.env.local
+.env
+/config/database.yml
 .foreman
 /.bundle
 /db/*.sqlite3

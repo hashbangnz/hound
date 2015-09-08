@@ -12,6 +12,14 @@
   pool: <%= ENV.fetch("DB_POOL", 5) %>
   reaping_frequency: <%= ENV.fetch("DB_REAPING_FREQUENCY", 10) %>
 
+development:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 10
+  database: hound_dev
+  port: 5432
+
 staging:
   <<: *default
 

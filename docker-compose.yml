@@ -19,10 +19,24 @@ web:
     - ":3000"
   links:
     - postgresql
-  env_file: .env
-  environment:
+    - redis
+  environment: &web_environment
     RAILS_ENV: staging
     VIRTUAL_HOST: hound.docker.hashbang.co.nz
     POSTGRES_USER: docker
     POSTGRES_PASSWORD: docker
+  env_file: ../shared/.env
   command: ./bin/docker-start
+resque:
+  links:
+    - postgresql
+    - redis
+  environment:
+    <<: *web_environment
+  env_file: ../shared/.env
+  image: houndstaging_web
+  volumes_from:
+    - web
+  command: bundle exec foreman start
+redis:
+  image: redis
