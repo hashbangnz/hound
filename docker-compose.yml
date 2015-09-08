@@ -14,7 +14,7 @@ web:
    - /home/deploy/log/hound_staging/unicorn:/var/log
    - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/assets:/app/public/assets
    - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/uploads:/app/public/uploads
-   - vendor/bundle:/bundle
+   - ./vendor/bundle:/bundle
   ports:
     - ":3000"
   links:
@@ -35,9 +35,10 @@ resque:
     <<: *web_environment
   env_file: ../shared/.env
   image: houndstaging_web
-  volumes_from:
-    - web
+  volumes:
+    - ./vendor/bundle:/bundle
   command: bundle exec foreman start
 redis:
   image: redis
-  volumes_from: web
+  environment:
+    - ./vendor/bundle:/bundle

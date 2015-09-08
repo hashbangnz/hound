@@ -4,7 +4,7 @@ ruby "2.2.2"
 gem 'docker_captain', github: "hashbangnz/dockercaptain", branch: 'master'
 gem "unicorn"
 gem 'redis'
-
+gem "foreman"
 gem "active_model_serializers", "0.8.3"
 gem "analytics-ruby", "~> 2.0.0", require: "segment/analytics"
 gem "angularjs-rails"
