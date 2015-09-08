@@ -40,3 +40,4 @@ resque:
   command: bundle exec foreman start
 redis:
   image: redis
+  volumes_from: web
