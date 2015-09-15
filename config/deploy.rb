@@ -7,8 +7,9 @@ set :application, 'hound'
 set :repo_url, 'git@github.com:hashbangnz/hound.git'
 
 set :deploy_via, :remote_cache
-set :deploy_to, ->() { "/home/#{fetch(:user)}/apps/#{fetch(:application)}" }
+set :deploy_to, ->() { "/home/#{fetch(:user)}/dockerised_apps/#{fetch(:application)}" }
 
+set :user, 'deploy'
 set :scm, :git
 set :pty, true
 
