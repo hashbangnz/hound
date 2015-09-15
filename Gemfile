@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.2.2"
 gem 'docker_captain', github: "hashbangnz/dockercaptain", branch: 'master'
+gem 'hashbang_backups', git: "git@github.com:hashbangnz/hashbang_backups.git", branch: 'fix/binary'
 gem "unicorn"
 gem 'redis'
 gem "foreman"
