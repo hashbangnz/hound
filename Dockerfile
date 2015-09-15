@@ -32,7 +32,7 @@ RUN echo 'BUNDLE_WITHOUT: development:test' > /app/.bundle/config
 
 WORKDIR /app
 
-RUN gem install backup -v 3.6.0 --no-ri --no-rdoc
+RUN gem install backup # version 4 backups
 RUN mkdir /backups
 
 RUN rm /etc/default/rcS && touch /etc/default/rcS
@@ -40,5 +40,12 @@ RUN echo "UTC=no" >> /etc/default/rcS
 RUN cp /etc/localtime /etc/localtime.bkp
 RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
+
+# for running backup v4
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' >> /etc/apt/sources.list
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+RUN apt-get update
+RUN apt-get install -y postgresql-9.4
+RUN apt-get remove -y postgresql-client-9.3
 
 COPY . /app
