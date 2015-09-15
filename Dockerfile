@@ -32,6 +32,9 @@ RUN echo 'BUNDLE_WITHOUT: development:test' > /app/.bundle/config
 
 WORKDIR /app
 
+RUN gem install backup -v 3.6.0 --no-ri --no-rdoc
+RUN mkdir /backups
+
 RUN rm /etc/default/rcS && touch /etc/default/rcS
 RUN echo "UTC=no" >> /etc/default/rcS
 RUN cp /etc/localtime /etc/localtime.bkp

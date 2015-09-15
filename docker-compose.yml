@@ -15,6 +15,7 @@ web:
    - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/assets:/app/public/assets
    - /home/deploy/dockerised_apps/nginx-proxy/assets/hound.docker.hashbang.co.nz/uploads:/app/public/uploads
    - ./vendor/bundle:/bundle
+   - /home/deploy/backups/hound_staging:/backups
   ports:
     - ":3000"
   links:
